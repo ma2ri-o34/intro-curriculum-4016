@@ -29,3 +29,12 @@ describe('/login', () => {
     expect(res.status).toBe(200);
   });
 });
+
+describe('/logout', () => {
+  test('ログイン時はユーザ名が表示される', async () => {
+    const app = require('./app');
+    const res = await app.request('/login');
+    expect(await res.text()).toMatch(/testuser/);
+    expect(res.status).toBe(200);
+  });
+});
